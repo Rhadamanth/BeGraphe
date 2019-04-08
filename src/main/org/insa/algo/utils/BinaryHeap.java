@@ -149,20 +149,20 @@ public class BinaryHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         E lastElement;
         if(this.isEmpty())
         	throw new ElementNotFoundException(x);
+        else {
+        	index = this.array.indexOf(x);
+        	if(index == -1 || index >= this.currentSize)
+        		throw new ElementNotFoundException(x);
         	else {
-        		index = this.array.indexOf(x);
-        		if(index == -1 || index >= this.currentSize)
-        			throw new ElementNotFoundException(x);
-        		else {
-        			indexLast=--this.currentSize;
-        			if(indexLast>index) {
-        				lastElement = this.array.get(indexLast);
-        				this.array.set(index, lastElement);
-        				this.percolateDown(index);
-        				this.percolateUp(index);
-        			}
+        		indexLast=--this.currentSize;
+        		if(indexLast>index) {
+        			lastElement = this.array.get(indexLast);
+        			this.array.set(index, lastElement);
+        			this.percolateDown(index);
+        			this.percolateUp(index);
         		}
         	}
+        }
     	/*supprime noeud, met à sa place nœud en dernière position de l'arbre binaire, 
     	 * (noeud le plus à droite), noté x. 
     	 * percolate-down : tant que x a des fils et que x est strictement inférieur à
