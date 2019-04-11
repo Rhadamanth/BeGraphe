@@ -16,7 +16,30 @@ public class Label implements Comparable<Label> {
 		this.father = null; 
 		this.inTas = false;
 	}
-	 
+	
+	/**
+     * Compare the ID of this label with the ID of the given label.
+     * 
+     * @param other Label to compare this label with.
+     * 
+     * @see java.lang.Comparable#compareTo(java.lang.Object)
+     */
+    @Override
+    /* Compare les Labels selon leur coût */
+	public int compareTo(Label autre) {
+		int resultat;
+		if (this.getTotalCost() < autre.getTotalCost()) {
+			resultat = -1;
+		}
+		else if (this.getTotalCost() == autre.getTotalCost()) {
+			resultat = 0;
+		}
+		else {
+			resultat = 1;
+		}
+		return resultat;
+	}
+	
 	public Node getNode() {
 		return this.node;
 	}
