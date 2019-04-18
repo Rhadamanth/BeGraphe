@@ -169,6 +169,7 @@ public class BinaryHeap<E extends Comparable<E>> implements PriorityQueue<E> {
     	 * l'un de ses fils, échange les positions entre x et le plus 
     	 * grand de ses fils, sinon percolate-up pour le faire remonter*/
     }
+    /* https://codereview.stackexchange.com/questions/44100/custom-indexof-without-string-methods */
 
     @Override
     public E findMin() throws EmptyPriorityQueueException {
