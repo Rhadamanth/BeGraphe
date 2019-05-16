@@ -15,8 +15,6 @@ import java.util.ArrayList;
  * Implements a binary heap. Note that all "matching" is based on the compareTo
  * method.
  * 
- * @author Mark Allen Weiss
- * @author DLB
  */
 public class BinaryHeap<E extends Comparable<E>> implements PriorityQueue<E> {
 

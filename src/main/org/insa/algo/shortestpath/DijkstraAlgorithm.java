@@ -51,7 +51,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 			if (current.getNode() == data.getDestination()) {
 				fin = true;
 			}
-			Iterator<Arc> arc = current.getNode().iterator();
+			Iterator<Arc> arc = current.getNode().iterator();;
 			while (arc.hasNext()) {
 				Arc arcIter = arc.next();
 
