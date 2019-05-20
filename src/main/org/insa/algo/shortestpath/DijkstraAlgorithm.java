@@ -47,6 +47,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 
 		while(!tas.isEmpty() && !fin){ 
 			Label current= tas.deleteMin();
+			notifyNodeMarked(current.getNode());
 			current.setMark();
 			if (current.getNode() == data.getDestination()) {
 				fin = true;
@@ -83,7 +84,6 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 						}
 						tas.insert(successeurLabel);
 						predecessorArcs[arcIter.getDestination().getId()] = arcIter;
-						notifyNodeMarked(successeur);
 					}
 				}
 			}
