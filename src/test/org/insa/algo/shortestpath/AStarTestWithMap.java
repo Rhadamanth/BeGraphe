@@ -31,7 +31,7 @@ public class AStarTestWithMap {
 			System.out.println("Argument invalide");
 		} else {
 			if (origine<0 || destination<0 || origine>=(graph.size()-1) || destination>=(graph.size()-1)) { // On est hors du graphe. / Sommets inexistants
-				System.out.println("ERREUR : Paramètres invalides ");
+				System.out.println("ERREUR : ParamÃ©tres invalides ");
 				
 			} else {
 				ArcInspector arcInspectorDijkstra;
@@ -110,7 +110,7 @@ public class AStarTestWithMap {
 		Graph graph = reader.read();
 
 		if (origine<0 || destination<0 || origine>=(graph.size()-1) || destination>=(graph.size()-1)) { // On est hors du graphe. / Sommets inexistants
-			System.out.println("ERREUR : Paramètres invalides ");
+			System.out.println("ERREUR : ParamÃ©tres invalides ");
 			
 		} else {
 			System.out.println("Origine : " + origine);
@@ -118,7 +118,7 @@ public class AStarTestWithMap {
 			
 			if(origine==destination) {
 				System.out.println("Origine et Destination identiques");
-				System.out.println("Tous les couts sont à 0.");
+				System.out.println("Tous les couts sont Ã  0.");
 				
 			} else {
 		
