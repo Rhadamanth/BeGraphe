@@ -7,36 +7,67 @@ public class Performance {
 	@Test
 	public void Compare() throws Exception {
 		
-		System.out.println("#####----- Test de validité sans oracle sur une carte-----######");
-		
-		
-		System.out.println("#####----- Carte : CARRE DENSE ---------------------------######");
-		System.out.println();
-		System.out.println("----- Cas d'un chemin simple ------");
-		int origine;
-		int destination;
-		origine = 0;
-		destination = 20000;
-		String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/carre-dense.mapgr";
+		System.out.println("#####----- Test de validité sur une carte-----######");
 		
 		DijkstraTestWithMap testD = new  DijkstraTestWithMap();
-		long startTime = System.nanoTime();
-		testD.testScenarioSansOracle(mapName,origine,destination);    
+		long startTime = System.nanoTime();    
 		long endTime = System.nanoTime();
 		long timeElapsedD = endTime - startTime;
-	    System.out.println("Execution time in nanoseconds  Dijkstra : " + timeElapsedD);
-	    System.out.println("Execution time in milliseconds Dijkstra : " + timeElapsedD / 1000000);
-		
 		AStarTestWithMap testA = new  AStarTestWithMap();
-		startTime = System.nanoTime();
-		testA.testScenarioSansOracle(mapName,origine,destination);
-		endTime = System.nanoTime();
-		long timeElapsedA = endTime - startTime;
-	    System.out.println("Execution time in nanoseconds  AStar : " + timeElapsedA);
-	    System.out.println("Execution time in milliseconds AStar : " + timeElapsedA / 1000000);
-	    System.out.println();
-	    System.out.println("AStar is " + ((float)timeElapsedD/(float)timeElapsedA-1)*100 + "% faster than Dijkstra");
-	    
+		long timeElapsedA;
+		System.out.println();
+		
+		
+		System.out.println("#####----- Carte : HAUTE-GARONNE ---------------------------######");
+		System.out.println();
+		System.out.println("----- Cas d'un chemin simple ------");
+		int origine = 48128;
+		int destination = 132978;
+		String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/haute-garonne.mapgr";
+		
+		float moyenne = 0;
+		for(int i =0;i<10;i++) {
+			testD = new  DijkstraTestWithMap();
+			startTime = System.nanoTime();
+			testD.testScenarioSansOracleBlindPerf(mapName,origine,destination);    
+			endTime = System.nanoTime();
+			timeElapsedD = endTime - startTime;
+			testA = new  AStarTestWithMap();
+			startTime = System.nanoTime();
+			testA.testScenarioSansOracleBlindPerf(mapName,origine,destination);
+			endTime = System.nanoTime();
+			timeElapsedA = endTime - startTime;
+		    moyenne += ((float)timeElapsedD/(float)timeElapsedA*100-1);
+		}
+		System.out.println("AStar is " + moyenne/2 + "% faster than Dijkstra in HAUTE-GARONNE");
+		System.out.println();
+		System.out.println();
+		
+		
+	    System.out.println("#####----- Carte : CARRE DENSE ---------------------------######");
+		System.out.println();
+		System.out.println("----- Cas d'un chemin simple ------");
+		origine = 0;
+		destination = 20000;
+		mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/carre-dense.mapgr";
+		
+		moyenne=0;
+		for(int i =0;i<2;i++) {
+			testD = new  DijkstraTestWithMap();
+			startTime = System.nanoTime();
+			testD.testScenarioSansOracleBlindPerf(mapName,origine,destination);    
+			endTime = System.nanoTime();
+			timeElapsedD = endTime - startTime;
+			testA = new  AStarTestWithMap();
+			startTime = System.nanoTime();
+			testA.testScenarioSansOracleBlindPerf(mapName,origine,destination);
+			endTime = System.nanoTime();
+			timeElapsedA = endTime - startTime;
+		    moyenne += ((float)timeElapsedD/(float)timeElapsedA*100-1);
+		}
+		System.out.println("AStar is " + moyenne/2 + "% faster than Dijkstra in CARRE DENSE");
+		System.out.println();
+		System.out.println();
 	    
 	    
 	    System.out.println("#####----- Carte : GHADELOUPE ---------------------------######");
@@ -46,23 +77,23 @@ public class Performance {
 		destination = 30000;
 		mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/guadeloupe.mapgr";
 		
-		float moyenne=0;
-		for(int i =0;i<2;i++) {
+		moyenne = 0;
+		for(int i =0;i<10;i++) {
 			testD = new  DijkstraTestWithMap();
 			startTime = System.nanoTime();
-			testD.testScenarioSansOracle(mapName,origine,destination);    
+			testD.testScenarioSansOracleBlindPerf(mapName,origine,destination);    
 			endTime = System.nanoTime();
 			timeElapsedD = endTime - startTime;
-			System.out.println("Execution time in milliseconds Dijkstra : " + timeElapsedD / 1000000);
 			testA = new  AStarTestWithMap();
 			startTime = System.nanoTime();
-			testA.testScenarioSansOracle(mapName,origine,destination);
+			testA.testScenarioSansOracleBlindPerf(mapName,origine,destination);
 			endTime = System.nanoTime();
 			timeElapsedA = endTime - startTime;
-			System.out.println("Execution time in milliseconds AStar : " + timeElapsedA / 1000000);
 		    moyenne += ((float)timeElapsedD/(float)timeElapsedA*100-1);
 		}
-		System.out.println("AStar is " + moyenne/2 + "% faster than Dijkstra");
+		System.out.println("AStar is " + moyenne/2 + "% faster than Dijkstra in GHADELOUPE");
+		System.out.println();
+		System.out.println();
 	}
 	 
 }

@@ -320,7 +320,7 @@ public class AStarTest {
 		test.testScenarioSansOracle(mapName,origine,destination);   
 	}
 
-	@Test
+	
 	public void testDoScenarioMinTempsDistCarreDense() throws Exception {
 		String mapName = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/carre-dense.mapgr";
 		
